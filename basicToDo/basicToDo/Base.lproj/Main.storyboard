@@ -87,6 +87,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="Vv0-6N-boZ" id="iie-d4-VFU"/>
+                        <outlet property="textField" destination="hhI-Rw-thD" id="Bp2-3x-mR7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
                 <exit id="TGV-eb-yPs" userLabel="Exit" sceneMemberID="exit"/>
