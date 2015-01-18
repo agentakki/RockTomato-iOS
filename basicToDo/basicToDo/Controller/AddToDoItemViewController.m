@@ -7,10 +7,13 @@
 //
 
 #import "AddToDoItemViewController.h"
+#import "TaskList.h"
 
 @interface AddToDoItemViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
+@property (weak, nonatomic) IBOutlet UITextField *targetPomosTextField;
+@property (weak, nonatomic) IBOutlet UITextField *completedPomosTextField;
 
 @end
 
@@ -40,6 +43,9 @@
         self.toDoItem = [[ToDoItem alloc] init];
         self.toDoItem.itemName = self.textField.text;
         self.toDoItem.completed = NO;
+        self.toDoItem.completedPomos = [self.completedPomosTextField.text intValue];
+        self.toDoItem.targetPomos = [self.targetPomosTextField.text intValue];
+        self.toDoItem.t_id = [[TaskList sharedList].toDoItems count];
     }
 }
 

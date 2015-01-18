@@ -67,13 +67,6 @@
     }];
 }
 
-//-(void) mockRequestWithWatch:(PBWatch *)watch{
-//    NSDictionary *dict = @{ @(0) : @"ListMocked" };
-//    [self receivedMessage:dict fromWatch:watch];
-//    ToDoListTableViewController *listController = [ToDoListTableViewController sharedList];
-//
-//    
-//}
 
 - (void)receivedMessage:(NSDictionary *)message fromWatch:(PBWatch *)watch{
     NSLog(@"Received message: %@", message);
@@ -84,26 +77,14 @@
         //ToDoListTableViewController *listController = [ToDoListTableViewController sharedList];
         TaskList *tasklist = [TaskList sharedList];
         [self sendListResponse];
-
-        for(ToDoItem *task in tasklist.toDoItems){
-            NSDictionary *dict = @{ @(0) : kTASK ,
-                                    @(1) : task.itemName,
-                                    @(2) : [NSNumber numberWithInt:task.t_id],
-                                    @(3) : [NSNumber numberWithInt:task.targetPomos],
-                                    @(4) : [NSNumber numberWithInt:task.completedPomos]
-                                    };
-            [self sendMessageWithDict:dict];
-            //pause ?
-                                    
-        }
+        //[self sendTaskAtIndex:0];
+        
     }
     else if([type isEqual: kPOMO_COMPLETE]){
         NSNumber* taskId = [message objectForKey:@(1)];
         Pomodoro* pomo = [[Pomodoro alloc] init];
         [pomo setCompletionDate:[NSDate date]];
-        [[TaskList sharedList] updateTaskAtIndex:[taskId longValue] With:pomo];
-    
-        
+        [[TaskList sharedList] updateTaskAtIndex:[taskId intValue] With:pomo];
     }
     else{
         NSLog(@"Unexpected value received for message");
@@ -111,30 +92,52 @@
 }
 
 - (void) sendListResponse{
-    int numOfMessages = [[TaskList sharedList] getNumberOfTasks];
+    NSUInteger numOfMessages = [[TaskList sharedList] getNumberOfTasks];
     
     NSDictionary *dict = @{ @(0) : kLIST_RESPONSE, @(1) : @(numOfMessages) };
-    [self sendMessageWithDict:dict];
+    
+    [self sendMessageWithDict:dict AndIndex:-1];
     
 }
 
--(void) sendMessageWithDict:(NSDictionary*)dict{
+- (void) sendTaskAtIndex:(NSUInteger)index{
+    if(index >= [[TaskList sharedList].toDoItems count]){
+        NSLog(@"Invalid index in sendTaskAtIndex()");
+        return;
+    }
+    ToDoItem *task = [[TaskList sharedList].toDoItems objectAtIndex:index];
+    NSDictionary *dict = @{ @(0) : kTASK ,
+                            @(1) : task.itemName,
+                            @(2) : [NSNumber numberWithInt:task.t_id],
+                            @(3) : [NSNumber numberWithInt:task.targetPomos],
+                            @(4) : [NSNumber numberWithInt:task.completedPomos]
+                            };
+    [self sendMessageWithDict:dict AndIndex:index];
+    
+}
+
+-(void) sendMessageWithDict:(NSDictionary*)dict AndIndex:(int)index{
     
     
     NSLog(@"Sent message: %@", dict);
     [_targetWatch appMessagesPushUpdate:dict onSent:^(PBWatch *watch,
                                                         NSDictionary *update, NSError *error) {
+        double delayInSeconds = 1.0;
         if(error){
             NSLog([error localizedDescription]);
-            double delayInSeconds = 1.0;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 NSLog(@"Sending again!");
-                [self sendMessageWithDict:update];
+                [self sendMessageWithDict:update AndIndex:index];
             });
         }
         else{
             NSLog(@"Update sent!");
+            if((index+1) == [[TaskList sharedList].toDoItems count]){
+                NSLog(@"Transmission complete.");
+                return;
+            }
+            [self sendTaskAtIndex:index+1];
         } 
     }];
 }
