@@ -19,6 +19,27 @@
 
 @implementation ToDoListTableViewController
 
+#pragma mark Singleton Methods
+
++ (id)sharedList {
+    static ToDoListTableViewController *sharedList = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedList = [[self alloc] init];
+    });
+    return sharedList;
+}
+
+- (id)init {
+    if (self = [super init]) {
+        //init properties
+        
+    }
+    return self;
+}
+
+#pragma mark State Methods
+
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
     AddToDoItemViewController *source = [segue sourceViewController];
     ToDoItem *item = source.toDoItem;
@@ -27,6 +48,7 @@
         [self.tableView reloadData];
     }
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,17 +70,40 @@
 
 #pragma mark - Table view data source
 
-- (void)loadInitialData {
-    ToDoItem *item1 = [[ToDoItem alloc] init];
-    item1.itemName = @"Buy milf";
-    [self.toDoItems addObject:item1];
-    ToDoItem *item2 = [[ToDoItem alloc] init];
-    item2.itemName = @"Buy eggs";
-    [self.toDoItems addObject:item2];
-    ToDoItem *item3 = [[ToDoItem alloc] init];
-    item3.itemName = @"Read a book";
-    [self.toDoItems addObject:item3];
+- (void) updateTaskAtIndex:(int)index With:(Pomodoro*) pomo{
+    if(index < 0){
+        NSLog(@"Invalid index. No task updated.");
+        return;
+              
+    }
+    ToDoItem *task = [self.toDoItems objectAtIndex:index];
+    task.completedPomos++;
+    [task.pomoArray addObject:pomo];
 }
+
+- (void) startTaskTranmission{
+    
+}
+
+- (void)loadInitialData {
+    NSMutableArray *mockTasksArray = {@"Buy milk" ,@"Buy eggs", @"Read a book" };
+   
+    for(NSString *taskName in mockTasksArray){
+        
+        ToDoItem *task = [[ToDoItem alloc] init];
+        task.itemName = taskName;
+        task.t_id = [self getNumberOfTasks];
+        task.completed = false;
+        task.targetPomos = task.completedPomos = 0;
+        [self.toDoItems addObject:task];
+    }
+    
+}
+
+- (NSUInteger) getNumberOfTasks{
+    return [self.toDoItems count];
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -75,10 +120,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     
     ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
+    [toDoItem setCompletionDate:[NSDate date]];
     cell.textLabel.text = toDoItem.itemName;
     
     if(toDoItem.completed){
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
     }
     else{
         cell.accessoryType = UITableViewCellAccessoryNone;

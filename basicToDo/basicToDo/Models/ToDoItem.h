@@ -10,16 +10,14 @@
 
 @interface ToDoItem : NSObject
 
+@property (nonatomic) int t_id;
 @property (nonatomic) NSString *itemName;
 @property BOOL completed;
-@property (nonatomic) NSDate *completionDate;
-
-
-// target number of pomos
-// array of pomos
-// mark pomo i as completed
+@property (nonatomic, strong) NSDate *completionDate;
+@property (nonatomic) int targetPomos;
+@property (nonatomic) int completedPomos;
+@property (nonatomic, strong) NSMutableArray *pomoArray;
 
 - (void)markAsCompleted:(BOOL)isComplete;
-
 
 @end

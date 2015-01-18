@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Pomodoro.h"
 
 @interface ToDoListTableViewController : UITableViewController
+
+@property (nonatomic, readonly) NSMutableArray *toDoItems;
+
+
++(id) sharedList;
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue;
+- (void) updateTaskAtIndex:(int)index With:(Pomodoro*) pomo;
+- (NSUInteger) getNumberOfTasks;
 
 @end

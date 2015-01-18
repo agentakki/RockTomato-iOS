@@ -36,6 +36,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="To-Do List" id="sf0-o0-vGl">
+                        <barButtonItem key="leftBarButtonItem" title="Test" id="mDt-4e-tif"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Jj7-Ye-vR4">
                             <connections>
                                 <segue destination="KH0-Xz-vk9" kind="presentation" id="tet-Ce-8HH"/>

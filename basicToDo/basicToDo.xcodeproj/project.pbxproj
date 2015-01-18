@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA2A98821A6AB3B0003C29EA /* PebbleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2A98811A6AB3B0003C29EA /* PebbleKit.framework */; };
+		BA2A98841A6AB3CB003C29EA /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2A98831A6AB3CB003C29EA /* ExternalAccessory.framework */; };
+		BA2A98861A6AB3D4003C29EA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2A98851A6AB3D4003C29EA /* libz.dylib */; };
+		BA2A98881A6AB3DA003C29EA /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2A98871A6AB3DA003C29EA /* CoreBluetooth.framework */; };
+		BA2A988A1A6AB3E0003C29EA /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2A98891A6AB3E0003C29EA /* CoreMotion.framework */; };
+		BA2A988C1A6AB3E4003C29EA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2A988B1A6AB3E4003C29EA /* CFNetwork.framework */; };
+		BA2A988E1A6AB3EA003C29EA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2A988D1A6AB3EA003C29EA /* MessageUI.framework */; };
+		BA2A98901A6AB3F5003C29EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2A988F1A6AB3F5003C29EA /* Foundation.framework */; };
 		BA43C6701A6A1904007BDC05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA43C66F1A6A1904007BDC05 /* main.m */; };
 		BA43C6731A6A1904007BDC05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA43C6721A6A1904007BDC05 /* AppDelegate.m */; };
 		BA43C6791A6A1904007BDC05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA43C6771A6A1904007BDC05 /* Main.storyboard */; };
@@ -16,6 +24,9 @@
 		BA43C6951A6A43CE007BDC05 /* AddToDoItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA43C6941A6A43CE007BDC05 /* AddToDoItemViewController.m */; };
 		BA43C6981A6A4462007BDC05 /* ToDoListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA43C6971A6A4462007BDC05 /* ToDoListTableViewController.m */; };
 		BA43C69D1A6A51B3007BDC05 /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BA43C69C1A6A51B3007BDC05 /* ToDoItem.m */; };
+		BA6D03601A6AC29C007DDA87 /* Pomodoro.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6D035F1A6AC29C007DDA87 /* Pomodoro.m */; };
+		BA6D03621A6ADBB4007DDA87 /* PebbleVendor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6D03611A6ADBB4007DDA87 /* PebbleVendor.framework */; };
+		BA6D03651A6ADFC0007DDA87 /* PebbleController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6D03641A6ADFC0007DDA87 /* PebbleController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA2A98811A6AB3B0003C29EA /* PebbleKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PebbleKit.framework; sourceTree = "<group>"; };
+		BA2A98831A6AB3CB003C29EA /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		BA2A98851A6AB3D4003C29EA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		BA2A98871A6AB3DA003C29EA /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		BA2A98891A6AB3E0003C29EA /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		BA2A988B1A6AB3E4003C29EA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		BA2A988D1A6AB3EA003C29EA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		BA2A988F1A6AB3F5003C29EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BA43C66A1A6A1904007BDC05 /* basicToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = basicToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA43C66E1A6A1904007BDC05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA43C66F1A6A1904007BDC05 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -46,6 +65,11 @@
 		BA43C6971A6A4462007BDC05 /* ToDoListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoListTableViewController.m; path = Controller/ToDoListTableViewController.m; sourceTree = "<group>"; };
 		BA43C69B1A6A51B3007BDC05 /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoItem.h; path = Models/ToDoItem.h; sourceTree = "<group>"; };
 		BA43C69C1A6A51B3007BDC05 /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoItem.m; path = Models/ToDoItem.m; sourceTree = "<group>"; };
+		BA6D035E1A6AC29C007DDA87 /* Pomodoro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pomodoro.h; path = Models/Pomodoro.h; sourceTree = "<group>"; };
+		BA6D035F1A6AC29C007DDA87 /* Pomodoro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pomodoro.m; path = Models/Pomodoro.m; sourceTree = "<group>"; };
+		BA6D03611A6ADBB4007DDA87 /* PebbleVendor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PebbleVendor.framework; sourceTree = "<group>"; };
+		BA6D03631A6ADFC0007DDA87 /* PebbleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PebbleController.h; path = Models/PebbleController.h; sourceTree = "<group>"; };
+		BA6D03641A6ADFC0007DDA87 /* PebbleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PebbleController.m; path = Models/PebbleController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +77,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA2A98901A6AB3F5003C29EA /* Foundation.framework in Frameworks */,
+				BA2A988E1A6AB3EA003C29EA /* MessageUI.framework in Frameworks */,
+				BA2A988C1A6AB3E4003C29EA /* CFNetwork.framework in Frameworks */,
+				BA2A988A1A6AB3E0003C29EA /* CoreMotion.framework in Frameworks */,
+				BA2A98881A6AB3DA003C29EA /* CoreBluetooth.framework in Frameworks */,
+				BA2A98861A6AB3D4003C29EA /* libz.dylib in Frameworks */,
+				BA6D03621A6ADBB4007DDA87 /* PebbleVendor.framework in Frameworks */,
+				BA2A98841A6AB3CB003C29EA /* ExternalAccessory.framework in Frameworks */,
+				BA2A98821A6AB3B0003C29EA /* PebbleKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,9 +99,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA2A98911A6ABE5F003C29EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA6D03611A6ADBB4007DDA87 /* PebbleVendor.framework */,
+				BA2A988F1A6AB3F5003C29EA /* Foundation.framework */,
+				BA2A988D1A6AB3EA003C29EA /* MessageUI.framework */,
+				BA2A988B1A6AB3E4003C29EA /* CFNetwork.framework */,
+				BA2A98891A6AB3E0003C29EA /* CoreMotion.framework */,
+				BA2A98871A6AB3DA003C29EA /* CoreBluetooth.framework */,
+				BA2A98851A6AB3D4003C29EA /* libz.dylib */,
+				BA2A98831A6AB3CB003C29EA /* ExternalAccessory.framework */,
+				BA2A98811A6AB3B0003C29EA /* PebbleKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BA43C6611A6A1904007BDC05 = {
 			isa = PBXGroup;
 			children = (
+				BA2A98911A6ABE5F003C29EA /* Frameworks */,
 				BA43C66C1A6A1904007BDC05 /* basicToDo */,
 				BA43C6861A6A1904007BDC05 /* basicToDoTests */,
 				BA43C66B1A6A1904007BDC05 /* Products */,
@@ -93,12 +143,8 @@
 				BA43C67A1A6A1904007BDC05 /* Images.xcassets */,
 				BA43C67C1A6A1904007BDC05 /* LaunchScreen.xib */,
 				BA43C66D1A6A1904007BDC05 /* Supporting Files */,
-				BA43C6931A6A43CE007BDC05 /* AddToDoItemViewController.h */,
-				BA43C6941A6A43CE007BDC05 /* AddToDoItemViewController.m */,
-				BA43C6961A6A4462007BDC05 /* ToDoListTableViewController.h */,
-				BA43C6971A6A4462007BDC05 /* ToDoListTableViewController.m */,
-				BA43C69B1A6A51B3007BDC05 /* ToDoItem.h */,
-				BA43C69C1A6A51B3007BDC05 /* ToDoItem.m */,
+				BA6D035C1A6AC270007DDA87 /* Controller */,
+				BA6D035D1A6AC279007DDA87 /* Model */,
 			);
 			path = basicToDo;
 			sourceTree = "<group>";
@@ -127,6 +173,30 @@
 				BA43C6881A6A1904007BDC05 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BA6D035C1A6AC270007DDA87 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BA43C6931A6A43CE007BDC05 /* AddToDoItemViewController.h */,
+				BA43C6941A6A43CE007BDC05 /* AddToDoItemViewController.m */,
+				BA6D03631A6ADFC0007DDA87 /* PebbleController.h */,
+				BA6D03641A6ADFC0007DDA87 /* PebbleController.m */,
+				BA43C6961A6A4462007BDC05 /* ToDoListTableViewController.h */,
+				BA43C6971A6A4462007BDC05 /* ToDoListTableViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		BA6D035D1A6AC279007DDA87 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BA43C69B1A6A51B3007BDC05 /* ToDoItem.h */,
+				BA43C69C1A6A51B3007BDC05 /* ToDoItem.m */,
+				BA6D035E1A6AC29C007DDA87 /* Pomodoro.h */,
+				BA6D035F1A6AC29C007DDA87 /* Pomodoro.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,9 +248,11 @@
 				TargetAttributes = {
 					BA43C6691A6A1904007BDC05 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 87J7C6R862;
 					};
 					BA43C6821A6A1904007BDC05 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 87J7C6R862;
 						TestTargetID = BA43C6691A6A1904007BDC05;
 					};
 				};
@@ -230,7 +302,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA43C6731A6A1904007BDC05 /* AppDelegate.m in Sources */,
+				BA6D03651A6ADFC0007DDA87 /* PebbleController.m in Sources */,
 				BA43C69D1A6A51B3007BDC05 /* ToDoItem.m in Sources */,
+				BA6D03601A6AC29C007DDA87 /* Pomodoro.m in Sources */,
 				BA43C6981A6A4462007BDC05 /* ToDoListTableViewController.m in Sources */,
 				BA43C6701A6A1904007BDC05 /* main.m in Sources */,
 				BA43C6951A6A43CE007BDC05 /* AddToDoItemViewController.m in Sources */,
@@ -355,9 +429,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = basicToDo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -365,9 +446,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = basicToDo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
@@ -375,6 +463,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -386,6 +476,7 @@
 				INFOPLIST_FILE = basicToDoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/basicToDo.app/basicToDo";
 			};
 			name = Debug;
@@ -394,6 +485,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -401,6 +494,7 @@
 				INFOPLIST_FILE = basicToDoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/basicToDo.app/basicToDo";
 			};
 			name = Release;
@@ -424,6 +518,7 @@
 				BA43C68F1A6A1904007BDC05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA43C6901A6A1904007BDC05 /* Build configuration list for PBXNativeTarget "basicToDoTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +527,7 @@
 				BA43C6921A6A1904007BDC05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
