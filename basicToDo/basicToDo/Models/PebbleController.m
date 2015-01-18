@@ -7,9 +7,10 @@
 //
 
 #import "PebbleController.h"
-#include "ToDoItem.h"
+#import "ToDoItem.h"
 #import "Pomodoro.h"
 #import "ToDoListTableViewController.h"
+#import "TaskList.h"
 #import <PebbleKit/PebbleKit.h>
 
 #define kLIST_REQUEST @"LIST_REQUEST"
@@ -20,8 +21,8 @@
 
 @interface PebbleController() <PBPebbleCentralDelegate>
 @property (nonatomic) BOOL isTargetSet;
-
 @end
+
 @implementation PebbleController
 {
     PBWatch *_targetWatch;
@@ -31,11 +32,6 @@
     self.isTargetSet = false;
     [[PBPebbleCentral defaultCentral] setDelegate:self];
     [self setTargetWatch:[[PBPebbleCentral defaultCentral] lastConnectedWatch]];
-//    NSArray *watchArray = [[PBPebbleCentral defaultCentral] connectedWatches];
-//    for(NSString *element in watchArray){
-//        //NSLog(element);
-//    }
-    
 }
 
 -(void)setTargetWatch:(PBWatch*)watch {
@@ -47,10 +43,8 @@
         if (isAppMessagesSupported) {
         
             uint8_t bytes[16];
-            
             NSUUID *uuid =[[NSUUID alloc] initWithUUIDString:APP_UUID];
             [uuid getUUIDBytes:bytes];
-            
             NSData *data = [NSData dataWithBytes:bytes length:sizeof(bytes)];
             
             //Set UUID and register receiving method
@@ -69,8 +63,17 @@
         }
         
         self.isTargetSet = true;
+      // [self mockRequestWithWatch:watch];
     }];
 }
+
+//-(void) mockRequestWithWatch:(PBWatch *)watch{
+//    NSDictionary *dict = @{ @(0) : @"ListMocked" };
+//    [self receivedMessage:dict fromWatch:watch];
+//    ToDoListTableViewController *listController = [ToDoListTableViewController sharedList];
+//
+//    
+//}
 
 - (void)receivedMessage:(NSDictionary *)message fromWatch:(PBWatch *)watch{
     NSLog(@"Received message: %@", message);
@@ -78,10 +81,11 @@
     NSString *type = [message objectForKey:@(0)];
 
     if([type isEqual: kLIST_REQUEST]){
+        //ToDoListTableViewController *listController = [ToDoListTableViewController sharedList];
+        TaskList *tasklist = [TaskList sharedList];
         [self sendListResponse];
-        ToDoListTableViewController *listController = [ToDoListTableViewController sharedList];
-        
-        for(ToDoItem *task in listController.toDoItems){
+
+        for(ToDoItem *task in tasklist.toDoItems){
             NSDictionary *dict = @{ @(0) : kTASK ,
                                     @(1) : task.itemName,
                                     @(2) : [NSNumber numberWithInt:task.t_id],
@@ -94,10 +98,10 @@
         }
     }
     else if([type isEqual: kPOMO_COMPLETE]){
-        int taskId = [message objectForKey:@"1"];
+        NSNumber* taskId = [message objectForKey:@(1)];
         Pomodoro* pomo = [[Pomodoro alloc] init];
         [pomo setCompletionDate:[NSDate date]];
-        [[ToDoListTableViewController sharedList] updateTaskAtIndex:taskId With:pomo];
+        [[TaskList sharedList] updateTaskAtIndex:[taskId longValue] With:pomo];
     
         
     }
@@ -107,7 +111,7 @@
 }
 
 - (void) sendListResponse{
-    int numOfMessages = [[ToDoListTableViewController sharedList] getNumberOfTasks];
+    int numOfMessages = [[TaskList sharedList] getNumberOfTasks];
     
     NSDictionary *dict = @{ @(0) : kLIST_RESPONSE, @(1) : @(numOfMessages) };
     [self sendMessageWithDict:dict];
@@ -117,10 +121,17 @@
 -(void) sendMessageWithDict:(NSDictionary*)dict{
     
     
+    NSLog(@"Sent message: %@", dict);
     [_targetWatch appMessagesPushUpdate:dict onSent:^(PBWatch *watch,
                                                         NSDictionary *update, NSError *error) {
         if(error){
             NSLog([error localizedDescription]);
+            double delayInSeconds = 1.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                NSLog(@"Sending again!");
+                [self sendMessageWithDict:update];
+            });
         }
         else{
             NSLog(@"Update sent!");

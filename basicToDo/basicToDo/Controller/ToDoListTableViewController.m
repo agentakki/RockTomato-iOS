@@ -8,21 +8,21 @@
 
 #import "ToDoListTableViewController.h"
 #import "ToDoItem.h"
+#import "TaskList.h"
 #import "AddToDoItemViewController.h"
 
+static ToDoListTableViewController *sharedList;
 
 @interface ToDoListTableViewController ()
-
-@property NSMutableArray *toDoItems;
-
+{
+}
 @end
 
 @implementation ToDoListTableViewController
 
 #pragma mark Singleton Methods
 
-+ (id)sharedList {
-    static ToDoListTableViewController *sharedList = nil;
++ (ToDoListTableViewController*)sharedList {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedList = [[self alloc] init];
@@ -33,18 +33,17 @@
 - (id)init {
     if (self = [super init]) {
         //init properties
-        
+        [self loadInitialData];
     }
     return self;
 }
-
 #pragma mark State Methods
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
     AddToDoItemViewController *source = [segue sourceViewController];
     ToDoItem *item = source.toDoItem;
     if (item != nil) {
-        [self.toDoItems addObject:item];
+        [[TaskList sharedList].toDoItems addObject:item];
         [self.tableView reloadData];
     }
 }
@@ -52,15 +51,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.toDoItems = [[NSMutableArray alloc] init];
+    [ToDoListTableViewController sharedList];
+    //self.toDoItems = [[NSMutableArray alloc] init];
     [self loadInitialData];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,39 +69,23 @@
 
 #pragma mark - Table view data source
 
-- (void) updateTaskAtIndex:(int)index With:(Pomodoro*) pomo{
-    if(index < 0){
-        NSLog(@"Invalid index. No task updated.");
-        return;
-              
-    }
-    ToDoItem *task = [self.toDoItems objectAtIndex:index];
-    task.completedPomos++;
-    [task.pomoArray addObject:pomo];
-}
-
-- (void) startTaskTranmission{
-    
-}
 
 - (void)loadInitialData {
-    NSMutableArray *mockTasksArray = {@"Buy milk" ,@"Buy eggs", @"Read a book" };
+    NSArray *mockTasksArray = [NSArray arrayWithObjects:@"Buy milk" ,@"Buy eggs", @"Read a book",nil];
    
-    for(NSString *taskName in mockTasksArray){
+    for(int i=0; i<mockTasksArray.count ; i++){
         
         ToDoItem *task = [[ToDoItem alloc] init];
-        task.itemName = taskName;
-        task.t_id = [self getNumberOfTasks];
+        task.itemName = mockTasksArray[i];
+        task.t_id = [[TaskList sharedList] getNumberOfTasks];
         task.completed = false;
         task.targetPomos = task.completedPomos = 0;
-        [self.toDoItems addObject:task];
+        [[TaskList sharedList].toDoItems addObject:task];
     }
     
 }
 
-- (NSUInteger) getNumberOfTasks{
-    return [self.toDoItems count];
-}
+
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -112,14 +95,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [self.toDoItems count];
+    return [[TaskList sharedList] getNumberOfTasks];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     
-    ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
+    ToDoItem *toDoItem = [[TaskList sharedList].toDoItems objectAtIndex:indexPath.row];
     [toDoItem setCompletionDate:[NSDate date]];
     cell.textLabel.text = toDoItem.itemName;
     
@@ -144,7 +127,7 @@
 */
 
 /*
-// Override to support editing the table view.
+//Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
@@ -152,8 +135,8 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
-}
-*/
+}*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -184,7 +167,7 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    ToDoItem *tappedItem = [self.toDoItems objectAtIndex:indexPath.row];
+    ToDoItem *tappedItem = [[TaskList sharedList].toDoItems objectAtIndex:indexPath.row];
     
     //reverse completion state
     tappedItem.completed = !tappedItem.completed;

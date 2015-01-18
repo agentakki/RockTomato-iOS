@@ -11,7 +11,7 @@
 @interface ToDoItem : NSObject
 
 @property (nonatomic) int t_id;
-@property (nonatomic) NSString *itemName;
+@property (nonatomic, strong) NSString *itemName;
 @property BOOL completed;
 @property (nonatomic, strong) NSDate *completionDate;
 @property (nonatomic) int targetPomos;

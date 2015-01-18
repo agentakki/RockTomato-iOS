@@ -11,6 +11,6 @@
 @interface Pomodoro : NSObject
 
 @property (nonatomic) int taskId;
-@property (nonatomic) NSDate *completionDate;
+@property (nonatomic, strong) NSDate *completionDate;
 
 @end

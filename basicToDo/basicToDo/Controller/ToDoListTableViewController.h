@@ -11,12 +11,8 @@
 
 @interface ToDoListTableViewController : UITableViewController
 
-@property (nonatomic, readonly) NSMutableArray *toDoItems;
+//+ (ToDoListTableViewController*) sharedList;
 
-
-+(id) sharedList;
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue;
-- (void) updateTaskAtIndex:(int)index With:(Pomodoro*) pomo;
-- (NSUInteger) getNumberOfTasks;
 
 @end

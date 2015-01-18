@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PebbleController.h"
+#import "ToDoListTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +22,7 @@
     
     
     [[[PebbleController alloc] init] initPB];
+    [ToDoListTableViewController sharedList];
     return YES;
 }
 

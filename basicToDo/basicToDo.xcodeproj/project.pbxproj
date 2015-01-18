@@ -27,6 +27,7 @@
 		BA6D03601A6AC29C007DDA87 /* Pomodoro.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6D035F1A6AC29C007DDA87 /* Pomodoro.m */; };
 		BA6D03621A6ADBB4007DDA87 /* PebbleVendor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6D03611A6ADBB4007DDA87 /* PebbleVendor.framework */; };
 		BA6D03651A6ADFC0007DDA87 /* PebbleController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6D03641A6ADFC0007DDA87 /* PebbleController.m */; };
+		BAD91EE11A6B7D6300B922E1 /* TaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD91EE01A6B7D6300B922E1 /* TaskList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		BA6D03611A6ADBB4007DDA87 /* PebbleVendor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PebbleVendor.framework; sourceTree = "<group>"; };
 		BA6D03631A6ADFC0007DDA87 /* PebbleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PebbleController.h; path = Models/PebbleController.h; sourceTree = "<group>"; };
 		BA6D03641A6ADFC0007DDA87 /* PebbleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PebbleController.m; path = Models/PebbleController.m; sourceTree = "<group>"; };
+		BAD91EDF1A6B7D6300B922E1 /* TaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskList.h; path = Models/TaskList.h; sourceTree = "<group>"; };
+		BAD91EE01A6B7D6300B922E1 /* TaskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskList.m; path = Models/TaskList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +198,8 @@
 				BA43C69C1A6A51B3007BDC05 /* ToDoItem.m */,
 				BA6D035E1A6AC29C007DDA87 /* Pomodoro.h */,
 				BA6D035F1A6AC29C007DDA87 /* Pomodoro.m */,
+				BAD91EDF1A6B7D6300B922E1 /* TaskList.h */,
+				BAD91EE01A6B7D6300B922E1 /* TaskList.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -305,6 +310,7 @@
 				BA6D03651A6ADFC0007DDA87 /* PebbleController.m in Sources */,
 				BA43C69D1A6A51B3007BDC05 /* ToDoItem.m in Sources */,
 				BA6D03601A6AC29C007DDA87 /* Pomodoro.m in Sources */,
+				BAD91EE11A6B7D6300B922E1 /* TaskList.m in Sources */,
 				BA43C6981A6A4462007BDC05 /* ToDoListTableViewController.m in Sources */,
 				BA43C6701A6A1904007BDC05 /* main.m in Sources */,
 				BA43C6951A6A43CE007BDC05 /* AddToDoItemViewController.m in Sources */,

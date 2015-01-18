@@ -10,6 +10,5 @@
 #import "ToDoItem.h"
 
 @interface AddToDoItemViewController : UIViewController
-@property ToDoItem *toDoItem;
-
+@property (strong, nonatomic) ToDoItem *toDoItem;
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define APP_UUID @"36519cda-0474-4324-a6b9-a44a5d052995"
+#define APP_UUID @"6c86cc1e-4bb1-46ee-8947-4bd45a27e113"
 
 
 @interface PebbleController : NSObject
